@@ -1,12 +1,13 @@
-scooter_rent=# SELECT c.login, COUNT(o.id) AS deliverycount FROM "Couriers" AS c LEFT JOIN "Orders" AS o ON c.id = o."courierId" WHERE o."inDelivery" = true GROUP BY c.id;
+scooter_rent=# SELECT c.login, COUNT(*) AS deliverycount FROM "Couriers" AS c JOIN "Orders" AS o ON c.id = o."courierId" WHERE o."inDelivery" = true GROUP BY c.id;
  login | deliverycount
 -------+---------------
- ded   |             2
- dod   |             4
- dyd   |             4
- dad   |             2
- dud   |             4
-(5 rows)
+ dud   |             2
+ dad   |             4
+ dyd   |             6
+(3 rows)
+
+scooter_rent=#
+
 
 scooter_rent=# SELECT track, CASE WHEN finished = true THEN 2 WHEN cancelled = true THEN -1 WHEN "inDelivery" = true THEN 1 ELSE 0 END AS status FROM "Orders";
  track  | status
