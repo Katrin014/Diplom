@@ -6,8 +6,6 @@ scooter_rent=# SELECT c.login, COUNT(*) AS deliverycount FROM "Couriers" AS c JO
  dyd   |             6
 (3 rows)
 
-scooter_rent=#
-
 
 scooter_rent=# SELECT track, CASE WHEN finished = true THEN 2 WHEN cancelled = true THEN -1 WHEN "inDelivery" = true THEN 1 ELSE 0 END AS status FROM "Orders";
  track  | status
